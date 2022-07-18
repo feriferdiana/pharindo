@@ -1,0 +1,21 @@
+-- Table: public.author
+
+-- DROP TABLE IF EXISTS public.author;
+
+CREATE TABLE IF NOT EXISTS public.author
+(
+    author_id SERIAL NOT NULL,
+    name character varying(64) COLLATE pg_catalog."default",
+    pen_name character varying(64) COLLATE pg_catalog."default",
+    email character varying(35) COLLATE pg_catalog."default",
+    is_disabled boolean,
+    created_time timestamp without time zone DEFAULT now(),
+    CONSTRAINT author_pkey PRIMARY KEY (author_id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.author
+    OWNER to postgres;

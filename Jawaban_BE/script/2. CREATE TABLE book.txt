@@ -1,0 +1,23 @@
+-- Table: public.book
+
+-- DROP TABLE IF EXISTS public.book;
+
+CREATE TABLE IF NOT EXISTS public.book
+(
+    book_id SERIAL NOT NULL,
+    title character varying(64) COLLATE pg_catalog."default",
+    author_id character varying(64) COLLATE pg_catalog."default" NOT NULL,
+    summary text COLLATE pg_catalog."default",
+    stock bigint,
+    price double precision,
+    cover_url character varying(125) COLLATE pg_catalog."default",
+    created_time timestamp without time zone DEFAULT now(),
+    CONSTRAINT book_pkey PRIMARY KEY (book_id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.book
+    OWNER to postgres;

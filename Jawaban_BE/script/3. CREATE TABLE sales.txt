@@ -1,0 +1,24 @@
+-- Table: public.sales
+
+-- DROP TABLE IF EXISTS public.sales;
+
+CREATE TABLE IF NOT EXISTS public.sales
+(
+    sales_id SERIAL NOT NULL,
+    recipient_name character varying(64) COLLATE pg_catalog."default",
+    recipient_email character varying(64) COLLATE pg_catalog."default",
+    book_title character varying(64) COLLATE pg_catalog."default",
+    author_id character varying(64) COLLATE pg_catalog."default",
+    quantity bigint,
+    price_per_unit double precision,
+    price_total double precision,
+    created_time timestamp without time zone DEFAULT now(),
+    CONSTRAINT sales_pkey PRIMARY KEY (sales_id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.sales
+    OWNER to postgres;
